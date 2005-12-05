@@ -1,21 +1,22 @@
 Summary:	isas-misc font
 Summary(pl):	Font isas-misc
 Name:		xorg-font-font-isas-misc
-Version:	0.99.0
-Release:	0.01
+Version:	0.99.1
+Release:	0.1
 License:	MIT
 Group:		Fonts
-Source0:	http://xorg.freedesktop.org/X11R7.0-RC0/font/font-isas-misc-%{version}.tar.bz2
-# Source0-md5:	bc69325804cada5a03f908486c2ac812
+Source0:	http://xorg.freedesktop.org/releases/X11R7.0-RC3/font/font-isas-misc-%{version}.tar.bz2
+# Source0-md5:	713866d06798b0feb913a3db6e94a33c
 URL:		http://xorg.freedesktop.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	pkgconfig >= 1:0.19
 BuildRequires:	xorg-app-bdftopcf
 BuildRequires:	xorg-app-mkfontdir
 BuildRequires:	xorg-app-mkfontscale
-BuildRequires:	xorg-font-font-util
 BuildRequires:	xorg-util-util-macros
+Requires(post,postun):	fontpostinst
+Requires:	%{_fontsdir}/misc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,7 +32,8 @@ Font isas-misc.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--with-fontdir=%{_fontsdir}/misc
 
 %{__make}
 
@@ -44,6 +46,13 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+fontpostinst misc
+
+%postun
+fontpostinst misc
+
 %files
 %defattr(644,root,root,755)
-%{_libdir}/X11/fonts/misc/*
+%doc COPYING ChangeLog
+%{_fontsdir}/misc/*.pcf.gz
