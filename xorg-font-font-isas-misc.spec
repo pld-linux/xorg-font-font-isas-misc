@@ -1,11 +1,11 @@
-Summary:	isas-misc font
-Summary(pl.UTF-8):	Font isas-misc
+Summary:	ISAS bitmap fonts
+Summary(pl.UTF-8):	Fonty bitmapowe ISAS
 Name:		xorg-font-font-isas-misc
 Version:	1.0.0
-Release:	0.1
+Release:	1
 License:	MIT
 Group:		Fonts
-Source0:	http://xorg.freedesktop.org/releases/X11R7.0/src/font/font-isas-misc-%{version}.tar.bz2
+Source0:	http://xorg.freedesktop.org/releases/individual/font/font-isas-misc-%{version}.tar.bz2
 # Source0-md5:	ec709a96b64b497a5cb5658c93bd38dc
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.57
@@ -16,13 +16,17 @@ BuildRequires:	xorg-app-mkfontscale
 BuildRequires:	xorg-util-util-macros
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/misc
+# contains useful aliases for these fonts
+Requires:	xorg-font-font-alias >= 1.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-isas-misc font.
+ISAS Fang song ti and Song ti Chinese bitmap fonts in hanzi guobiao
+(GB2312) encoding.
 
 %description -l pl.UTF-8
-Font isas-misc.
+Chińskie fonty bitmapowe ISAS Fang song ti i Song ti w kodowaniu hanzi
+guobiao (GB2312).
 
 %prep
 %setup -q -n font-isas-misc-%{version}
@@ -54,4 +58,4 @@ fontpostinst misc
 %files
 %defattr(644,root,root,755)
 %doc COPYING ChangeLog
-%{_fontsdir}/misc/*.pcf.gz
+%{_fontsdir}/misc/gb*.pcf.gz
