@@ -1,12 +1,12 @@
 Summary:	ISAS bitmap fonts
 Summary(pl.UTF-8):	Fonty bitmapowe ISAS
 Name:		xorg-font-font-isas-misc
-Version:	1.0.1
+Version:	1.0.2
 Release:	1
 License:	MIT
 Group:		Fonts
 Source0:	http://xorg.freedesktop.org/releases/individual/font/font-isas-misc-%{version}.tar.bz2
-# Source0-md5:	88b5b32c5a27576e9d00675bcc966806
+# Source0-md5:	02eca731d77307c4cb37738a32f2db9f
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
